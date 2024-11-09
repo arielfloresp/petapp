@@ -1,0 +1,81 @@
+﻿@model List<Pettapp2.Models.ConfirmacionCompra>
+
+<h2>Confirmaciones de Compra</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Banco Destino</th>
+            <th>Número de Transacción</th>
+            <th>Monto Abonado</th>
+            <th>Fecha</th>
+            <th>Descargar Comprobante</th>
+            <th>Pago Validado</th>
+            <th>Envío Completado</th> <!-- Columna adicional -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var confirmacion in Model)
+        {
+            <tr>
+                <td>@confirmacion.Nombre</td>
+                <td>@confirmacion.Apellido</td>
+                <td>@confirmacion.BancoDestino</td>
+                <td>@confirmacion.NumeroTransaccion</td>
+                <td>Bs. @confirmacion.MontoAbonado</td>
+                <td>@confirmacion.Fecha.ToString("MM/dd/yyyy")</td>
+                <td>
+                    <a asp-action="DescargarComprobante" asp-route-filePath="@confirmacion.ComprobantePath" class="btn btn-secondary">Descargar</a>
+                </td>
+                <td>
+                    <button class="btn btn-sm @(confirmacion.PagoValidado ? "btn-success" : "btn-warning")" onclick="validarPago(@confirmacion.ConfirmacionCompraId)">
+                        @if (confirmacion.PagoValidado)
+                        {
+                            <span>Pago Validado</span>
+                        }
+                        else
+                        {
+                            <span>Validar Pago</span>
+                        }
+                    </button>
+                </td>
+                <td>
+                    <!-- Checkbox para el estado de envío completado -->
+                    <input type="checkbox" class="form-check-input" onchange="marcarEnvioCompletado(@confirmacion.ConfirmacionCompraId, this.checked)" @(confirmacion.EnvioCompletado ? "checked" : "") />
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    function validarPago(id) {
+        fetch(`/Pago/ValidarPago?id=${id}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        })
+            .then(response => {
+                if (!response.ok) {
+                    alert("No se pudo validar el pago.");
+                } else {
+                    location.reload();
+                }
+            })
+            .catch(error => console.error("Error:", error));
+    }
+
+    function marcarEnvioCompletado(id, completado) {
+        fetch(`/Pago/MarcarEnvioCompletado?id=${id}&completado=${completado}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        })
+            .then(response => {
+                if (!response.ok) {
+                    alert("No se pudo actualizar el estado de envío.");
+                }
+            })
+            .catch(error => console.error("Error:", error));
+    }
+</script>

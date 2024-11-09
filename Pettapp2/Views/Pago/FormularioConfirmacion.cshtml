@@ -1,0 +1,101 @@
+﻿@model Pettapp2.Models.ConfirmacionPagoViewModel
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Confirmación de Pago</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Scroll para toda la página */
+        body {
+            overflow-y: scroll;
+        }
+
+        /* Estilos del formulario */
+        .form-container {
+            max-width: 400px;
+            margin: 3rem auto;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #f8f9fa;
+        }
+
+        .form-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #495057;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: #495057;
+        }
+
+        .form-select, .form-control {
+            box-shadow: none;
+        }
+
+        .btn-primary {
+            width: 100%;
+            font-size: 1rem;
+            padding: 0.75rem;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2 class="form-title">Confirmación de Pago</h2>
+
+        <form asp-action="EnviarConfirmacion" asp-controller="Pago" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" required>
+            </div>
+
+            <div class="form-group">
+                <label for="apellido" class="form-label">Apellido</label>
+                <input type="text" class="form-control" id="apellido" name="apellido" required>
+            </div>
+
+            <div class="form-group">
+                <label for="bancoDestino" class="form-label">Banco de destino</label>
+                <select class="form-select" id="bancoDestino" name="bancoDestino" required>
+                    <option value="">Selecciona un banco</option>
+                    <option value="Banco Economico">Banco Economico</option>
+                    <option value="Mercantil Santa Cruz">Mercantil Santa Cruz</option>
+                    <option value="Banco Nacional de Bolivia">Banco Nacional de Bolivia</option>
+                    <option value="Banco de Credito">Banco de Credito</option>
+                    <option value="Banco Bisa">Banco Bisa</option>
+                    <option value="Banco Sol">Banco Sol</option>
+                    <option value="Banco Ganadero">Banco Ganadero</option>
+                    <option value="Banco Fie">Banco Fie</option>
+                    <option value="Banco Union">Banco Union</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="numeroTransaccion" class="form-label">N° de Transacción</label>
+                <input type="text" class="form-control" id="numeroTransaccion" name="numeroTransaccion" required>
+            </div>
+
+            <div class="form-group">
+                <label for="montoAbonado" class="form-label">Monto Abonado</label>
+                <input type="number" class="form-control" id="montoAbonado" name="montoAbonado" step="0.01" required>
+            </div>
+
+            <div class="form-group">
+                <label for="comprobantePago" class="form-label">Comprobante de Pago</label>
+                <input type="file" class="form-control" id="comprobantePago" name="comprobantePago" accept="image/*" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+    </div>
+</body>
+</html>

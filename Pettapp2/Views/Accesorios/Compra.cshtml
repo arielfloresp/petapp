@@ -1,0 +1,27 @@
+﻿@model Pettapp2.Models.Accesorio
+
+@{
+    ViewData["Title"] = "Confirmar Compra";
+}
+
+<h2>Confirmar Compra</h2>
+
+<div class="card" style="width: 18rem;">
+
+    <div class="card-body">
+        <h5 class="card-title">@Model.Nombre</h5>
+        <p class="card-text">Descripción: @Model.Descripcion</p>
+        <p class="card-text">Precio: $@Model.Precio</p>
+        <p class="card-text">Stock disponible: @Model.Stock</p>
+
+        <form asp-action="ConfirmarCompra" method="post">
+            <input type="hidden" name="AccesorioId" value="@Model.AccesorioId" />
+            <div class="form-group">
+                <label for="Cantidad">Cantidad a comprar:</label>
+                <input type="number" id="Cantidad" name="Cantidad" class="form-control" min="1" max="@Model.Stock" required />
+            </div>
+            <button type="submit" class="btn btn-success mt-3">Confirmar Compra</button>
+            <a href="@Url.Action("Index", "Accesorios")" class="btn btn-secondary mt-3">Cancelar</a>
+        </form>
+    </div>
+</div>

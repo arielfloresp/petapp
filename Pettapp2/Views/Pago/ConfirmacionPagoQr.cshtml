@@ -1,0 +1,47 @@
+﻿@model ConfirmacionPagoViewModel
+
+<div class="container my-5">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h3 class="text-center text-success">Transferencias QR (Pagar)</h3>
+            <h4 class="text-center text-success"><i class="fas fa-check-circle"></i> Transferencia realizada exitosamente</h4>
+
+            <hr />
+
+            <div class="mb-3">
+                <p><strong>Código de transacción:</strong> @Model.CodigoTransaccion</p>
+                <p><strong>Cuenta origen:</strong> @Model.CuentaOrigen</p>
+                <p><strong>Nombre del beneficiario:</strong> @Model.NombreBeneficiario</p>
+                <p><strong>Nombre del ordenante:</strong> @Model.NombreOrdenante</p>
+                <p><strong>Monto:</strong> Bs. @Model.Monto</p>
+                <p><strong>Fecha de transferencia:</strong> @Model.FechaTransferencia</p>
+                <p><strong>Tipo de cuenta:</strong> @Model.TipoCuenta</p>
+            </div>
+
+            <div class="text-center">
+                <img src="~/images/mercantil-logo.png" alt="Mercantil Santa Cruz" class="img-fluid my-3" style="max-width: 150px;">
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <a href="@Url.Action("DescargarQR", "Pago")" class="btn btn-secondary mx-2">Guardar</a>
+                <button onclick="compartir()" class="btn btn-primary mx-2">Compartir</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function compartir() {
+        if (navigator.share) {
+            navigator.share({
+                title: 'Confirmación de Pago',
+                text: 'Detalles de mi pago realizado',
+                url: window.location.href
+            }).then(() => console.log('Compartido exitosamente'))
+              .catch(error => console.log('Error al compartir', error));
+        } else {
+            alert("La funcionalidad de compartir no es compatible con este navegador.");
+        }
+    }
+</script>
+

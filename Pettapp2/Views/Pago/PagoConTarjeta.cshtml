@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Pago con tarjeta";
+}
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h3 class="mb-4 text-center text-dark">Pago con tarjeta</h3>
+
+                    <p class="text-muted text-center text-dark">Ingresa los detalles de tu tarjeta</p>
+
+                    <form asp-action="ProcesarPagoConTarjeta" asp-controller="Pago" method="post">
+                        <div class="mb-3">
+                            <label for="cardName" class="form-label text-dark">Nombre en la tarjeta</label>
+                            <input type="text" class="form-control form-control-lg" id="cardName" name="cardName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="cardNumber" class="form-label text-dark">Número de tarjeta</label>
+                            <input type="text" class="form-control form-control-lg" id="cardNumber" name="cardNumber" required>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="expiryDate" class="form-label text-dark">Fecha de vencimiento</label>
+                                <input type="text" class="form-control form-control-lg" id="expiryDate" name="expiryDate" placeholder="MM/AA" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="cvv" class="form-label text-dark">CVV</label>
+                                <input type="text" class="form-control form-control-lg" id="cvv" name="cvv" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="billingAddress" class="form-label text-dark">Dirección de facturación</label>
+                            <input type="text" class="form-control form-control-lg" id="billingAddress" name="billingAddress" required>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg">Pagar</button>
+                        </div>
+                    </form>
+
+                    <div class="text-center mt-4">
+                        <a href="@Url.Action("Checkout", "Pago")" class="text-muted">Cancelar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

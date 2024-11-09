@@ -1,0 +1,18 @@
+﻿@model decimal
+
+@{
+    ViewData["Title"] = "Donación Global";
+}
+
+<h1>Donación Global</h1>
+
+<p>Realiza una donación global para que el monto sea dividido entre todos los refugios disponibles.</p>
+
+<form asp-action="DonacionGlobal" method="post">
+    <div class="form-group">
+        <label for="monto">Monto a donar</label>
+        <input type="number" step="0.01" class="form-control" id="monto" name="monto" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Donar</button>
+</form>

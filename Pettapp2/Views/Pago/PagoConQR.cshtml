@@ -1,0 +1,30 @@
+﻿@model Pettapp2.Models.PagoQRViewModel
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h3 class="mb-4 text-center text-dark">Pago por QR</h3>
+
+                    <!-- Mostrar los detalles del pedido -->
+                    <p class="text-dark"><strong>Detalles del pedido:</strong></p>
+                    <p class="text-dark">Accesorio: @Model.NombreAccesorio</p>
+                    <p class="text-dark">Precio: Bs. @Model.PrecioAccesorio</p>
+                    <p class="text-dark">Fecha de compra: @Model.FechaCompra</p>
+
+                    <p class="text-center text-dark">
+                        Por favor, envía el comprobante de pago al WhatsApp <strong>+591 72164449</strong>.
+                        Una vez se haya realizado el pago, automáticamente se hará la entrega del delivery de su pedido.
+                    </p>
+
+                    <!-- Botón para ir al formulario de confirmación -->
+                    <div class="text-center my-4">
+                        <a href="@Url.Action("FormularioConfirmacion", "Pago")" class="btn btn-primary mb-2">Formulario de confirmación</a>
+                        <a href="@Url.Action("DescargarQR", "Pago")" class="btn btn-primary ms-3">Descargar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

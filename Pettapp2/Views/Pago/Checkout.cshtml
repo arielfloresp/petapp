@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Pantalla de pago";
+}
+
+<h2>Proceder con el pago</h2>
+<p>Por favor, elige tu método de pago:</p>
+
+<form asp-action="SeleccionarMetodoPago" method="post">
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="paymentMethod" id="creditCard" value="creditCard" checked>
+        <label class="form-check-label" for="creditCard">Pagar con tarjeta</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="paymentMethod" id="qr" value="qr">
+        <label class="form-check-label" for="qr">Pagar por QR</label>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Proceder al checkout</button>
+</form>
+
+
+<a href="@Url.Action("Index", "Accesorios")" class="btn btn-secondary mt-4">Volver a la tienda</a>

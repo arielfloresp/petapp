@@ -1,0 +1,99 @@
+﻿@model IEnumerable<Pettapp2.Models.Donacione>
+
+@{
+    ViewData["Title"] = "xyz";
+}
+
+<h1 class="text-center">xyz</h1>
+
+<div class="mb-3">
+    <a asp-action="Create" class="btn btn-success">Hacer nueva donación</a>
+    <a asp-action="DonacionGlobal" class="btn btn-info">Donación global</a>
+</div>
+
+<table class="table table-hover table-bordered table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th class="text-center">
+                Monto Donado
+            </th>
+            <th class="text-center">
+                Fecha de Donación
+            </th>
+            <th class="text-center">
+                Refugio Beneficiado
+            </th>
+            <th class="text-center">
+                Usuario
+            </th>
+            <th class="text-center">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (!Model.Any())
+
+        {
+            <tr>
+                <td colspan="5" class="text-center">No has realizado ninguna donación.</td>
+            </tr>
+        }
+
+        else
+
+        {
+            @foreach (var item in Model)
+
+            {
+                <tr>
+                    <td class="text-center">
+                        $@Html.DisplayFor(modelItem => item.Monto)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.FechaDonacion)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.Refugio.Nombre)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.Usuario.Nombre)
+                    </td>
+                    <td class="text-center">
+                        <a asp-action="Edit" asp-route-id="@item.DonacionId" class="btn btn-warning btn-sm">Editar</a>
+                        <a asp-action="Details" asp-route-id="@item.DonacionId" class="btn btn-info btn-sm">Detalles</a>
+                        <a asp-action="Delete" asp-route-id="@item.DonacionId" class="btn btn-danger btn-sm">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<style>
+    h1 {
+        font-size: 2.5rem;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .table {
+        background-color: white;
+    }
+
+    .thead-dark {
+        background-color: #007BFF;
+        color: white;
+    }
+
+    .btn {
+        margin-right: 10px;
+    }
+
+    .btn-sm {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+</style>

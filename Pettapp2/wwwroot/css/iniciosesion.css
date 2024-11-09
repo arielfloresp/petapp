@@ -1,0 +1,322 @@
+/* Login Styles */
+.login-container {
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco semitransparente */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    .login-container h2 {
+        margin-bottom: 20px;
+        color: #000; /* Cambiado a negro */
+    }
+
+.login-form input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.login-form .forgot-password {
+    display: block;
+    text-align: left;
+    margin-top: -5px;
+    margin-bottom: 10px;
+    font-size: 0.75rem; /* Tamaño de texto pequeño */
+    color: #007BFF;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+    .login-form .forgot-password:hover {
+        color: #0056b3;
+    }
+
+.login-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+    .login-form button:hover {
+        background-color: #ff5252;
+    }
+
+.register-section {
+    margin-top: 15px;
+}
+
+    .register-section p {
+        font-size: 0.9rem;
+        color: #333;
+        margin-bottom: 5px;
+    }
+
+.register-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+    .register-btn:hover {
+        background-color: #0056b3;
+    }
+
+/* Remember Me Styles */
+.remember-me {
+    display: flex;
+    margin-top: 15px;
+    font-size: 0.7rem; /* Tamaño del texto más pequeño */
+    color: #000; /* Color negro */
+    align-items: center; /* Alinea el texto con el checkbox */
+}
+
+    .remember-me input {
+        margin-right: 10px; /* Añade un espacio de 10px entre el checkbox y el texto */
+    }
+
+/* Menu Styles */
+.menu-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 2; /* Above the background */
+}
+
+.menu-icon {
+    font-size: 24px;
+    cursor: pointer;
+    color: #333; /* Discreet color */
+    padding: 8px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+    .menu-icon:hover {
+        background-color: rgba(255, 255, 255, 1);
+    }
+
+.dropdown-menu {
+    display: none; /* Initially hidden */
+    position: absolute;
+    top: 40px;
+    left: 0;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 0;
+    min-width: 200px;
+    overflow: hidden; /* Hide overflow for rounded corners */
+    transform: translateY(-10px); /* Start with a slight upward offset */
+    transition: transform 0.3s ease; /* Smooth transition */
+}
+
+.menu-item {
+    display: block;
+    color: #333;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    font-weight: bold; /* Set text to bold */
+    transition: background-color 0.2s;
+}
+
+    .menu-item:last-child {
+        border-bottom: none; /* Remove border for the last item */
+    }
+
+    .menu-item:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+
+/* Show menu animation */
+.dropdown-menu.show {
+    display: block; /* Make visible */
+    transform: translateY(0); /* Slide into position */
+}
+
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-image 1s ease-in-out; /* Smooth transition */
+    animation: fadeEffect 1s ease-in-out; /* Add fade effect */
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Fade effect for the background change */
+@keyframes fadeEffect {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Add a dark overlay for better text readability */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Adjust the darkness here */
+    z-index: 0;
+}
+
+/* Make sure other elements appear above the overlay */
+header, main, footer {
+    position: relative;
+    z-index: 1;
+}
+
+/* Header Styles */
+header {
+    text-align: center;
+    margin-top: 20px;
+}
+
+h1 {
+    font-size: 3rem;
+    color: #ffdf91;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1.2rem;
+    color: #ffffff;
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    margin-top: auto;
+    padding: 20px 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    color: #ffffff;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff; /* Cambia el color del texto de las celdas */
+}
+
+th {
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro para mejor contraste */
+    color: #ffdf91; /* Cambia el color del texto de los encabezados */
+    font-weight: bold;
+}
+
+a {
+    color: #ffdf91; /* Color de los enlaces */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+    a:hover {
+        color: #ffffff; /* Color cuando haces hover en los enlaces */
+    }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .login-container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    .menu-icon {
+        font-size: 22px;
+    }
+}
+
+/* Additional Menu and Navbar Styles */
+.navbar {
+    position: fixed; /* Hace que el menú esté siempre en la parte superior */
+    top: 0; /* Posiciona el menú en la parte superior */
+    left: 0;
+    right: 0;
+    width: 100%; /* Asegura que ocupe todo el ancho */
+    z-index: 1030; /* Eleva el menú por encima de otros elementos */
+    background-color: white; /* Color de fondo */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Bordes del menú */
+}
+
+.navbar-nav {
+    display: flex;
+    justify-content: center; /* Centra los elementos del menú */
+    width: 100%; /* Asegura que los enlaces estén centrados */
+}
+
+.nav-link {
+    margin-left: 15px;
+    margin-right: 15px;
+    font-size: 18px; /* Ajusta el tamaño del texto */
+    color: #333; /* Color de los enlaces */
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+    .nav-link:hover {
+        color: #555; /* Color al hacer hover */
+    }
